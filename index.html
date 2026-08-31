@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <title>陳彥甫&amp;許馨云婚禮邀請函</title>
+  <link rel="icon" href="data:,">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    .video-wrap {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      cursor: pointer;
+    }
+
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 88px;
+      height: 88px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.55);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+    }
+
+    .play-button:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .play-button svg {
+      width: 34px;
+      height: 34px;
+      margin-left: 4px;
+      fill: #ffffff;
+    }
+
+    .play-button.hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="video-wrap">
+    <video id="invitation-video" src="invitation-video.mp4" playsinline oncontextmenu="return false"></video>
+    <button id="play-button" class="play-button" aria-label="播放影片">
+      <svg viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+    </button>
+  </div>
+  <script>
+    const video = document.getElementById('invitation-video');
+    const playButton = document.getElementById('play-button');
+
+    const REDIRECT_AT_SECONDS = 26;
+    const REDIRECT_URL = 'https://wedding951753.my.canva.site/cr-invitation';
+
+    playButton.addEventListener('click', playVideo);
+
+    video.addEventListener('click', () => {
+      if (video.ended || video.currentTime >= REDIRECT_AT_SECONDS) {
+        window.open(REDIRECT_URL, '_blank');
+      } else if (video.paused) {
+        playVideo();
+      } else {
+        pauseVideo();
+      }
+    });
+
+    function playVideo() {
+      video.play();
+      playButton.classList.add('hidden');
+    }
+
+    function pauseVideo() {
+      video.pause();
+      playButton.classList.remove('hidden');
+    }
+  </script>
+</body>
+
+</html>
