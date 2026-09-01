@@ -3,28 +3,31 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>陳彥甫&amp;許馨云婚禮邀請函</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>彥甫&amp;馨云 婚禮邀請函</title>
   <link rel="icon" href="data:,">
   <style>
     html,
     body {
       margin: 0;
       padding: 0;
-      height: 100%;
       background: #ffffff;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     .video-wrap {
       position: relative;
-      width: 100%;
-      height: 100%;
+      width: min(100%, calc(100vh * 720 / 1280));
+      width: min(100%, calc(100svh * 720 / 1280)); /* 舊版 iOS 不支援 svh 時退回 vh */
+      margin: 0 auto;
+      aspect-ratio: 720 / 1280;
     }
 
     video {
+      display: block;
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       cursor: pointer;
     }
 
@@ -71,13 +74,13 @@
       </svg>
     </button>
   </div>
+
   <script>
     const video = document.getElementById('invitation-video');
     const playButton = document.getElementById('play-button');
 
     const REDIRECT_AT_SECONDS = 26;
-    const REDIRECT_URL = 'https://wedding951753.my.canva.site/cr-invitation';
-
+    const REDIRECT_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSc4AOmS4MWbKJNeR79BI-hm7OtHDJ6fmzoslPhsOlYvWZjhzw/viewform';
     playButton.addEventListener('click', playVideo);
 
     video.addEventListener('click', () => {
