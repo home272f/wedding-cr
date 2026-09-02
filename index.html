@@ -71,6 +71,20 @@
       display: none;
     }
   </style>
+  <script>
+    (function () {
+      const url = new URL(window.location.href);
+      const RELOAD_PARAM = '_r';
+
+      // 如果網址尚未帶有重新導向標記
+      if (!url.searchParams.has(RELOAD_PARAM)) {
+        url.searchParams.set(RELOAD_PARAM, '1');
+        
+        // 使用 replace 避免在 History 堆疊中產生多餘紀錄
+        window.location.replace(url.toString());
+      }
+    })();
+  </script>
 </head>
 
 <body>
