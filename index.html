@@ -107,7 +107,7 @@
 
     video.addEventListener('click', () => {
       if (video.ended || video.currentTime >= REDIRECT_AT_SECONDS) {
-        window.open(REDIRECT_URL, '_blank');
+        window.open(REDIRECT_URL, '_self');
       } else if (video.paused) {
         playVideo();
       } else {
