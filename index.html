@@ -102,12 +102,12 @@
     const playButton = document.getElementById('play-button');
 
     const REDIRECT_AT_SECONDS = 26;
-    const REDIRECT_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSc4AOmS4MWbKJNeR79BI-hm7OtHDJ6fmzoslPhsOlYvWZjhzw/viewform';
+    const REDIRECT_URL = 'form.html';
     playButton.addEventListener('click', playVideo);
 
     video.addEventListener('click', () => {
       if (video.ended || video.currentTime >= REDIRECT_AT_SECONDS) {
-        window.open(REDIRECT_URL, '_self');
+        window.open(REDIRECT_URL, '_blank');
       } else if (video.paused) {
         playVideo();
       } else {
